@@ -206,20 +206,20 @@ function ting_search_extendform_submit($form, &$form_state) {
   $fields = array();
   $args = array('text' => $form_state['values']['search_block_form']);
 
-  $s = $form_state['values']['ting_search_extendform_creator_field'];
-  if ( $s != "" ) {
+  if (!empty($form_state['values']['ting_search_extendform_creator_field'])) {
+    $s = $form_state['values']['ting_search_extendform_creator_field'];
     $args['creator'] = $s;
     $fields[] = sprintf('%s=%s', variable_get('ting_search_extendform_creator_index', 'dc.creator'), $s);
   }
 
-  $s = $form_state['values']['ting_search_extendform_title_field'];
-  if ( $s != "" ) {
+  if (!empty($form_state['values']['ting_search_extendform_title_field'])) {
+    $s = $form_state['values']['ting_search_extendform_title_field'];
     $args['title'] = $s;
     $fields[] = sprintf('%s=%s', variable_get('ting_search_extendform_title_index', 'dc.title'), $s);
   }
 
-  $s = $form_state['values']['ting_search_extendform_subject_field'];
-  if ( $s != "" ) {
+  if (!empty($form_state['values']['ting_search_extendform_subject_field'])) {
+    $s = $form_state['values']['ting_search_extendform_subject_field'];
     $args['subject'] = $s;
     $fields[] = sprintf('%s=%s', variable_get('ting_search_extendform_subject_index', 'dc.subject'), $s);
   }
