@@ -209,27 +209,27 @@ function ting_search_extendform_submit($form, &$form_state) {
   if (!empty($form_state['values']['ting_search_extendform_creator_field'])) {
     $s = $form_state['values']['ting_search_extendform_creator_field'];
     $args['creator'] = $s;
-    $fields[] = sprintf('%s=%s', variable_get('ting_search_extendform_creator_index', 'dc.creator'), $s);
+    $fields[] = sprintf('%s="%s"', variable_get('ting_search_extendform_creator_index', 'dc.creator'), $s);
   }
 
   if (!empty($form_state['values']['ting_search_extendform_title_field'])) {
     $s = $form_state['values']['ting_search_extendform_title_field'];
     $args['title'] = $s;
-    $fields[] = sprintf('%s=%s', variable_get('ting_search_extendform_title_index', 'dc.title'), $s);
+    $fields[] = sprintf('%s="%s"', variable_get('ting_search_extendform_title_index', 'dc.title'), $s);
   }
 
   if (!empty($form_state['values']['ting_search_extendform_subject_field'])) {
     $s = $form_state['values']['ting_search_extendform_subject_field'];
     $args['subject'] = $s;
-    $fields[] = sprintf('%s=%s', variable_get('ting_search_extendform_subject_index', 'dc.subject'), $s);
+    $fields[] = sprintf('%s="%s"', variable_get('ting_search_extendform_subject_index', 'dc.subject'), $s);
   }
 
-  $q = implode(' AND ', $fields);
+  $q = implode(' and ', $fields);
   if ($q == '') {
     $q = $terms;
   }
   elseif ($terms != '') {
-    $q = sprintf('%s AND (%s)', $terms, $q);
+    $q = sprintf('%s and (%s)', $terms, $q);
   }
 
   // Check to see if the form was submitted empty.
